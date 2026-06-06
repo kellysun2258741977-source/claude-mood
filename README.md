@@ -1,4 +1,4 @@
-<!-- Before publishing: (1) replace <your-username> with your GitHub handle,
+<!-- Before publishing: (1) replace kellysun2258741977-source with your GitHub handle,
      (2) record assets/demo.gif via ./demo.sh (see "Recording the demo GIF"). -->
 
 <h1 align="center">🤖 ClaudeMood</h1>
@@ -11,7 +11,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-13%2B-black?logo=apple" alt="macOS">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT">
-  <img src="https://img.shields.io/github/stars/<your-username>/claude-mood?style=social" alt="stars">
+  <img src="https://img.shields.io/github/stars/kellysun2258741977-source/claude-mood?style=social" alt="stars">
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@ the moment it needs you.
 ## Install
 
 ```bash
-git clone https://github.com/<your-username>/claude-mood ~/claude-mood
+git clone https://github.com/kellysun2258741977-source/claude-mood ~/claude-mood
 cd ~/claude-mood && ./install.sh
 ```
 
