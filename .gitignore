@@ -1,0 +1,5 @@
+.venv/
+.pid
+*.log
+# internal launch/competitive strategy — keep out of the public repo
+LAUNCH.md
