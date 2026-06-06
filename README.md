@@ -1,6 +1,3 @@
-<!-- Before publishing: (1) replace kellysun2258741977-source with your GitHub handle,
-     (2) record assets/demo.gif via ./demo.sh (see "Recording the demo GIF"). -->
-
 <h1 align="center">🤖 ClaudeMood</h1>
 
 <p align="center">
