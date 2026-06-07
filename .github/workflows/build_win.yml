@@ -1,0 +1,56 @@
+name: Build Windows release
+
+on:
+  push:
+    tags:
+      - "v*"          # trigger on version tags: v1.0, v1.1, etc.
+  workflow_dispatch:  # also allow manual trigger from GitHub UI
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install Pillow pystray playsound pyinstaller
+
+      - name: Build ClaudeMood.exe (system tray)
+        run: |
+          pyinstaller --windowed --onefile --name ClaudeMood `
+            --add-data "assets;assets" `
+            systray.py
+
+      - name: Build hook_win.exe (Claude Code hook)
+        run: |
+          pyinstaller --onefile --name hook_win `
+            --add-data "assets;assets" `
+            hook_win.py
+
+      - name: Package release zip
+        run: |
+          New-Item -ItemType Directory -Force -Path release
+          Copy-Item dist\ClaudeMood.exe release\
+          Copy-Item dist\hook_win.exe  release\
+          Copy-Item install_win.bat    release\
+          Copy-Item uninstall_win.bat  release\
+          Compress-Archive -Path release\* -DestinationPath ClaudeMood-windows.zip
+
+      - name: Upload zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClaudeMood-windows
+          path: ClaudeMood-windows.zip
+          retention-days: 30
+
+      # If triggered by a tag, attach to the GitHub Release automatically
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ClaudeMood-windows.zip

@@ -17,7 +17,12 @@ import pystray
 
 HOME = Path.home()
 STATE_FILE = HOME / ".claude" / "cc-status.json"
-ASSETS = Path(__file__).parent / "assets"
+
+# PyInstaller bundles assets into sys._MEIPASS; fall back to script directory
+if getattr(sys, "frozen", False):
+    ASSETS = Path(sys._MEIPASS) / "assets"  # type: ignore[attr-defined]
+else:
+    ASSETS = Path(__file__).parent / "assets"
 
 SOURCES = {
     "working": "claude-fu.gif",

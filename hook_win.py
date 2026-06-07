@@ -17,13 +17,24 @@ from pathlib import Path
 
 HOME = Path.home()
 STATE_FILE = HOME / ".claude" / "cc-status.json"
-ASSETS = Path(__file__).parent / "assets"
+
+# PyInstaller bundles assets into sys._MEIPASS; fall back to script directory
+if getattr(sys, "frozen", False):
+    ASSETS = Path(sys._MEIPASS) / "assets"  # type: ignore[attr-defined]
+    _EXE_DIR = Path(sys.executable).parent   # directory containing hook_win.exe
+else:
+    ASSETS = Path(__file__).parent / "assets"
+    _EXE_DIR = None
 
 # ---------------------------------------------------------------------------
 # Installer / uninstaller
 # ---------------------------------------------------------------------------
 
 def _hook_cmd(src: Path) -> str:
+    # Prefer the bundled hook_win.exe when it exists (no Python needed)
+    hook_exe = src / "hook_win.exe"
+    if hook_exe.exists():
+        return f'"{hook_exe}"'
     python_exe = src / ".venv" / "Scripts" / "python.exe"
     hook_script = src / "hook_win.py"
     return f'"{python_exe}" "{hook_script}"'
