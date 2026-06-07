@@ -34,17 +34,32 @@ the moment it needs you.
 
 ## Install
 
+**macOS**
+
 ```bash
 git clone https://github.com/kellysun2258741977-source/claude-mood ~/claude-mood
 cd ~/claude-mood && ./install.sh
 ```
 
-That's it — the Claude appears in your menu bar and **starts on every login**.
+Claude appears in your menu bar and **starts on every login**.
 Quit anytime from the menu (**Quit Claude Status**); remove with `./uninstall.sh`.
 
-<sub>`install.sh` is transparent: it creates a self-contained `venv` (so it never
-touches your global Python), **appends** its hooks to `~/.claude/settings.json`
-(never overwrites your existing hooks), and installs a LaunchAgent for autostart.</sub>
+**Windows**
+
+1. Install [Python 3.8+](https://python.org) — check **"Add Python to PATH"** during setup
+2. Clone the repo and double-click `install_win.bat`
+
+```
+git clone https://github.com/kellysun2258741977-source/claude-mood
+cd claude-mood
+install_win.bat
+```
+
+Claude appears in your **system tray** (bottom-right, near the clock) and starts on every login.
+Remove with `uninstall_win.bat`.
+
+<sub>Both installers create a self-contained `venv` (never touch your global Python) and
+**append** hooks to `~/.claude/settings.json` without overwriting your existing ones.</sub>
 
 ## How it works
 
