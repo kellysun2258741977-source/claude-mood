@@ -26,9 +26,9 @@ else:
 
 SOURCES = {
     "working": "claude-fu.gif",
-    "confirm": "claude-loading.gif",
+    "confirm": "claude-fail.png",     # 需确认 / 出现错误
     "done":    "claude-sparkle.gif",
-    "idle":    "claude-fail.png",
+    "idle":    "claude-sparkle.gif",  # same as done
 }
 
 DONE_TIMEOUT = 30   # seconds after "done" -> fall back to "idle"

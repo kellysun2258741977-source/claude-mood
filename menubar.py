@@ -45,9 +45,9 @@ def ensure_single_instance():
 # state -> source emoji file (user-picked)
 SOURCES = {
     "working": "claude-fu.gif",       # 工作中
-    "confirm": "claude-loading.gif",  # 需确认
+    "confirm": "claude-fail.png",     # 需确认 / 出现错误
     "done": "claude-sparkle.gif",     # 已完成
-    "idle": "claude-fail.png",        # 闲暇中 (static)
+    "idle": "claude-sparkle.gif",     # 闲暇中 (same as done)
 }
 DONE_TIMEOUT = 30   # seconds after "done" -> fall back to "idle"
 CANVAS_H = 44       # icon canvas height in px (= 22pt @2x retina)
