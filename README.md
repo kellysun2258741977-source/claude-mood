@@ -29,8 +29,7 @@ the moment it needs you.
 |---|---|---|
 | 🟡 | **Working** | Claude is thinking / running tools |
 | 🔴 | **Needs you** | Waiting for a permission or your input — *plays a chime* |
-| 🟢 | **Done** | Finished the turn — *plays a chime* |
-| ⚪️ | **Idle** | Nothing running |
+| 🟢 | **Done** | Finished the turn — *plays a chime* (stays lit until next session) |
 
 ## Install
 
@@ -86,9 +85,8 @@ Drop your own art/sounds into `assets/` — any GIF/PNG and any `.mp3` works:
 | File | Shown when |
 |---|---|
 | `assets/claude-fu.gif` | working |
-| `assets/claude-loading.gif` | needs you |
-| `assets/claude-sparkle.gif` | done |
-| `assets/claude-fail.png` | idle |
+| `assets/claude-fail.png` | needs you |
+| `assets/claude-sparkle.gif` | done + idle |
 | `assets/confirm.mp3` / `assets/done.mp3` | sounds |
 
 Per-state size/alignment is auto-handled (artwork is cropped to its content and
